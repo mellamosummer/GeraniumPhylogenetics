@@ -30,7 +30,6 @@ OUTDIR="/scratch/srb67793/GeraniumPhylogenomics_April32024"
 module load Trimmomatic/0.39-Java-13
 module load FastQC/0.11.9-Java-11
 module load MultiQC/1.14-foss-2022a
-#module load HybPiper/2.0.1-conda
 
 ##################################
 # 1) Pre Trim QC 
