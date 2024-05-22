@@ -3,6 +3,10 @@ Repository for Geranium Phylogenomics Paper by Summer Blanco, Deanna Negru, Jim 
 
 **_Directory Descriptions_**
 
-NuclearTree:
+NuclearGeneTrees:
 
-PlastidTree:
+PlastidTrees:
+
+Scripts:
+
+SpeciesTree_351NuclearGenes:
