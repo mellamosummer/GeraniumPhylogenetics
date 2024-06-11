@@ -2,7 +2,6 @@ library(ggtree)
 library(tidyverse)
 library(ape)
 
-#plot discovista tree
 #load tree
 DVtree <- read.tree("/Users/summerblanco/Desktop/astral4_353_supercontigs_scored.tree")
 
@@ -20,7 +19,8 @@ tr2$node.label <- as.numeric(tr2$node.label)
 tr2$node.label <- round(tr2$node.label,2)
 p2 <- ggtree(tr2)%<+% sample_data + geom_tiplab(color = 'black', size = 4, geom = "text", ) #+ geom_nodelab(aes(label=label,  subset=label<0.95), size=3,hjust = 1.8, vjust=2)
 ggsave("/Users/summerblanco/Desktop/ASTRAL4_supercontigs_branches.png", width=10,height=12, bg='transparent')
-#rotate tree at node
+
+#rotate tree at nodes
 p2 + geom_text(aes(label=node), hjust=-.3)
 p3 <- ggtree::rotate(p2,48) 
 p3 + geom_treescale()
@@ -28,19 +28,25 @@ p3 + geom_treescale()
 ggsave("/Users/summerblanco/Desktop/ASTRAL4_supercontigs_branches.png", width=17,height=10, bg='transparent')
 
 
-#plot pie chart tree
-
-
-#plot tree with names
+##########plot pie chart tree##########
+#read in tree
 tr2 <- read.tree("/Users/summerblanco/Desktop/Github/GeraniumPhylogenetics/SpeciesTree_351NuclearGenes/astral4_353_supercontigs.tree")
+
+#truncate node labels
 tr2$node.label <- as.numeric(tr2$node.label)
 tr2$node.label <- round(tr2$node.label,2)
+
+#update names on tops
 tr2 <- updateLabel(tr2, sample_data$sample_name, sample_data$NewName)
+
+#plot tree
 p2 <- ggtree(tr2, branch.length = "none")%<+% sample_data + geom_tiplab(color = 'black', size = 4, geom = "text", ) + geom_nodelab(aes(label=label,  subset=label<0.95), size=3,hjust = 1.8, vjust=2)
 p2
+
 #rotate tree at node
 p2 + geom_text(aes(label=node), hjust=-.3)
 p3 <- ggtree::rotate(p2,48) 
+
 #read in quartet score excel sheet
 dat2<-read.csv("/Users/summerblanco/Desktop/astral4_353_supercontigs_scored.tree.csv")
 
@@ -48,6 +54,8 @@ dat2<-read.csv("/Users/summerblanco/Desktop/astral4_353_supercontigs_scored.tree
 dat2 <- data.frame(dat2)
 pies <- nodepie(dat2, cols=1:3)
 pietree <- inset(p3, pies,width=0.06,height = 0.1)
+
+#adjust axes and make transparent background
 pietree + ggplot2::xlim(0, 20) +
   theme(
     panel.background = element_rect(fill='transparent'),
@@ -58,6 +66,6 @@ pietree + ggplot2::xlim(0, 20) +
     legend.box.background = element_rect(fill='transparent'),
   )
 
-
+#save
 ggsave("/Users/summerblanco/Desktop/ASTRAL4_piechart_supercontigs_nolabels.png", width=10,height=12, bg='transparent')
 
