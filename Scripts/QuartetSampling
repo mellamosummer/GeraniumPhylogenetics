@@ -14,6 +14,7 @@
 ml phyx
 ml IQ-TREE/1.6.12-foss-2022a
 
+#do this interactively (qlogin)
 #git clone https://github.com/FePhyFoFum/quartetsampling.git
 
 #use trimal alignments to make Concatenated alignment
@@ -25,6 +26,8 @@ pxs2phy –s Supermatrix/Concatenated.aln –o Concatenated.phy
 #run quartet sampling python script
 #tree= ASTRAL tree
 #align= concatenated trimal alignments in phylip format
+#genetrees= file specifying gene tree boundaries, made from the previous command
 #specify engine as iqtree
 
-quartetsampling/pysrc/quartet_sampling.py --tree ../supercontigs/astral4_353_supercontigs.tree --align Concatenated.phy --genetrees partition.model --reps 200 --threads 2 --lnlike 2.0 --data-type nuc --engine iqtree --results-dir QuartetResults2 --temp-dir tempdir2/
+# i think the cluster already has python loaded so you might not need to start the command with "python"
+python quartetsampling/pysrc/quartet_sampling.py --tree ../supercontigs/astral4_353_supercontigs.tree --align Concatenated.phy --genetrees partition.model --reps 200 --threads 2 --lnlike 2.0 --data-type nuc --engine iqtree --results-dir QuartetResults2 --temp-dir tempdir2/
