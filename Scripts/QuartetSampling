@@ -27,4 +27,4 @@ pxs2phy –s Supermatrix/Concatenated.aln –o Concatenated.phy
 #align= concatenated trimal alignments in phylip format
 #specify engine as iqtree
 
-quartetsampling/pysrc/quartet_sampling.py --tree ../supercontigs/astral4_353_supercontigs.tree --align Concatenated.phy --gene_trees partition.model --reps 200 --threads 2 --lnlike 2.0 --data-type nuc --engine iqtree --results-dir QuartetResults2 --temp-dir tempdir2/
+quartetsampling/pysrc/quartet_sampling.py --tree ../supercontigs/astral4_353_supercontigs.tree --align Concatenated.phy --genetrees partition.model --reps 200 --threads 2 --lnlike 2.0 --data-type nuc --engine iqtree --results-dir QuartetResults2 --temp-dir tempdir2/
